@@ -213,7 +213,8 @@ class ModuleAnchor
     }
 
     final components =
-        url.isEmpty ? <String>[] : url.replaceAll('/', ' ').trim().split(' ');
+        url.isEmpty ? <String>[] : [(url.startsWith('/') ? url.replaceFirst('/', '') : url).trim()];
+        // url.isEmpty ? <String>[] : url.replaceAll('/', ' ').trim().split(' ');
     final length = components.length;
     late ThrioModule? module = firstModule;
     while (components.isNotEmpty) {
